@@ -7,8 +7,8 @@ _Kliensoldali webprogramozás 1. beadandó 2022-23-2_
 Kérlek, töltsétek ki az adataitokkal beadás előtt!
 
 ```txt
-<Hallgató neve>
-<Neptun kódja>
+Nagy Ádám
+PS9NTR
 Kliensoldali webprogramozás - beadandó
 Ezt a megoldást a fent írt hallgató küldte be és készítette a Kliensoldali webprogramozás kurzus számonkéréséhez.
 Kijelentem, hogy ez a megoldás a saját munkám. Nem másoltam vagy használtam harmadik féltől
@@ -25,18 +25,18 @@ A fegyelmi vétség legsúlyosabb következménye a hallgató elbocsátása az e
 Kérlek, beadás előtt töltsétek ki, hogy mely részfeladatokat oldottátok meg!
 
 ```txt
-[ ] A [kiadott keretprogram](https://github.com/horvathgyozo/react-bead-fuggvenytesztelo-starter-kit) használata (1pt)
+[x] A [kiadott keretprogram](https://github.com/horvathgyozo/react-bead-fuggvenytesztelo-starter-kit) használata (1pt)
 [ ] Legalább 4 komponens (1pt)
 
 Függvény
-  [ ] A függvény megjelenítésre kerül (1pt)
+  [x] A függvény megjelenítésre kerül (1pt)
 
 Előre megadott tesztek
-  [ ] Az előre megadott tesztek nevei felsorolásra kerülnek (1pt)
-  [ ] Az előre megadott tesztek egyesével futtathatók, eredményükről vizuális visszajelzést kapunk (1pt)
-  [ ] Az előre megadott tesztek egyszerre is futtathatók, ekkor is megfelelően változnak az egyes tesztek vizuális visszajelzései (1pt)
-  [ ] Egy előre megadott teszt sikeres futtatásánál megjelenítésre kerül a kapott pontszám (1pt)
-  [ ] Az összes előre megadott teszt futtatásánál megjelenik az elért összpontszám (1pt)
+  [x] Az előre megadott tesztek nevei felsorolásra kerülnek (1pt)
+  [x] Az előre megadott tesztek egyesével futtathatók, eredményükről vizuális visszajelzést kapunk (1pt)
+  [x] Az előre megadott tesztek egyszerre is futtathatók, ekkor is megfelelően változnak az egyes tesztek vizuális visszajelzései (1pt)
+  [x] Egy előre megadott teszt sikeres futtatásánál megjelenítésre kerül a kapott pontszám (1pt)
+  [x] Az összes előre megadott teszt futtatásánál megjelenik az elért összpontszám (1pt)
 
 Egyedi tesztek
   [ ] Az egyedi tesztek listája megjelenik, sorszámuk és neveik felsorolásával (1pt)
