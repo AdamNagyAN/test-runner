@@ -26,7 +26,7 @@ Kérlek, beadás előtt töltsétek ki, hogy mely részfeladatokat oldottátok m
 
 ```txt
 [x] A [kiadott keretprogram](https://github.com/horvathgyozo/react-bead-fuggvenytesztelo-starter-kit) használata (1pt)
-[ ] Legalább 4 komponens (1pt)
+[x] Legalább 4 komponens (1pt)
 
 Függvény
   [x] A függvény megjelenítésre kerül (1pt)
@@ -51,7 +51,7 @@ Egyedi tesztek
   [ ] Az `input` paraméterben megadott szerkezet legfelső szintjén lévő **objektum** típus megfelelően jelenik meg, látszanak az objektum mezőnevei, amelyek típusuknak megfelelően szerkeszthetők (3pt)
   [ ] A megjelenített űrlapmezők kitöltöttsége ellenőrzésre kerül, a hibák listában kiíródnak (1pt)
   [ ] A hibalista egy elemére kattintva a fólusz a megfelelő elemre ugrik (1pt)
-  [ ] **Tetszőleges** `input` struktúra megjelenítésre kerül rekurzívan (+5pt)
+  [x] **Tetszőleges** `input` struktúra megjelenítésre kerül rekurzívan (+5pt)
   [ ] Az egyedi tesztek egyesével futtathatók, eredményükről vizuális visszajelzést kapunk (1pt)
   [ ] Az egyedi tesztek egyszerre is futtathatók, ekkor is megfelelően változnak az egyes tesztek vizuális visszajelzései (1pt)
 

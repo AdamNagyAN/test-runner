@@ -1,4 +1,5 @@
-import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/all.js";
+import { AiFillPlayCircle } from "react-icons/ai";
+import { ResultIndicator } from "./ResultIndicator.jsx";
 
 export default function TestTableRow({ name, testResult, onRun, points }) {
   return (
@@ -8,7 +9,7 @@ export default function TestTableRow({ name, testResult, onRun, points }) {
         <ResultIndicator testResult={testResult} />
       </td>
       <td>
-        <button className="btn btn-success" onClick={onRun}>Run Test</button>
+        <button onClick={onRun}><AiFillPlayCircle className="icon text-accent" /></button>
       </td>
       <td><TestPoints points={points} testResult={testResult}/></td>
     </tr>
@@ -22,9 +23,4 @@ function TestPoints({testResult, points}) {
   return <span className={testResult.isSuccess ? "text-success" : "text-error"} >{points}</span>
 }
 
-function ResultIndicator({ testResult }) {
-  if (!testResult) {
-    return null;
-  }
-  return <>{testResult.isSuccess ? <AiFillCheckCircle className="icon text-success" /> : <AiFillCloseCircle className="icon text-error" />}</>;
-}
+
