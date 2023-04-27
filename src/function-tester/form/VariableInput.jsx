@@ -1,18 +1,12 @@
-import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import VariableArrayInput from "./VariableArrayInput.jsx";
-import TreeViewWithLabel from "./TreeViewWithLabel.jsx";
+import VariableArrayInput from './VariableArrayInput.jsx';
+import TreeViewWithLabel from './TreeViewWithLabel.jsx';
 
 function VariableInput({ type, name: label }) {
   const { register } = useFormContext();
 
-  console.log({type, label});
-
-
   if (type instanceof Array) {
-    return (
-      <VariableArrayInput label={label} type={type[0]}/>
-    );
+    return <VariableArrayInput label={label} type={type[0]} />;
   }
 
   if (type instanceof Object) {
@@ -27,23 +21,27 @@ function VariableInput({ type, name: label }) {
 
   if (type === 'boolean') {
     return (
-      <div className="w-full">
+      <div className='w-full'>
         <label className='label' htmlFor={label}>
           <span className='label-text'>{label}:</span>
         </label>
-        <input {...register(label)} type='checkbox'  className='toggle toggle-success' />
+        <input
+          {...register(label, { required: true })}
+          type='checkbox'
+          className='toggle toggle-success'
+        />
       </div>
     );
   }
 
   if (type === 'number') {
     return (
-      <div className="w-full">
+      <div className='w-full'>
         <label className='label'>
           <span className='label-text'>{label}:</span>
         </label>
         <input
-          {...register(label)}
+          {...register(label, { required: true })}
           type='number'
           placeholder={label}
           className='input input-md input-bordered w-full'
@@ -53,12 +51,12 @@ function VariableInput({ type, name: label }) {
   }
 
   return (
-    <div className="w-full">
+    <div className='w-full'>
       <label className='label'>
         <span className='label-text'>{label}:</span>
       </label>
       <input
-        {...register(label)}
+        {...register(label, { required: true })}
         type='text'
         placeholder={label}
         className='input input-md input-bordered w-full'
@@ -66,7 +64,5 @@ function VariableInput({ type, name: label }) {
     </div>
   );
 }
-
-
 
 export default VariableInput;

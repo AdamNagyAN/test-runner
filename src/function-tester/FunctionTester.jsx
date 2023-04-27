@@ -1,12 +1,8 @@
-import React from 'react'
 import PredefinedTests from "./PredefinedTests.jsx";
-import CustomTestForm from "./form/CustomTestForm.jsx";
 import CustomTests from "./CustomTests.jsx";
 
 export function FunctionTester({ fn, input, output, tests, onFinish }) {
   const functionCode = fn.toString();
-  const [manualTests, setManualTests] = React.useState([]);
-  const [currentTest, setCurrentTest] = React.useState(0);
 
 
 
@@ -20,8 +16,7 @@ export function FunctionTester({ fn, input, output, tests, onFinish }) {
         <pre><code>{functionCode}</code></pre>
       </div>
       <PredefinedTests fn={fn} tests={tests} />
-      <CustomTests />
-      <CustomTestForm input={input} />
+      <CustomTests input={input}/>
       <button
         className="btn"
         onClick={() =>

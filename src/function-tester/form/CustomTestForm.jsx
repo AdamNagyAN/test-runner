@@ -1,32 +1,38 @@
-import React from 'react';
 import VariableInput from './VariableInput.jsx';
 import { FormProvider, useForm } from 'react-hook-form';
+import Modal from '../../components/Modal.jsx';
 
-function CustomTestForm({ input }) {
+function CustomTestForm({ input, selectedTest, setSelectedTest }) {
   const formMethods = useForm({
     mode: 'onSubmit',
     reValidateMode: 'onChange',
-    defaultValues: {},
+    defaultValues: selectedTest,
   });
 
   const onSubmit = (formValues) => {
     console.log(formValues);
   };
 
-
+  const onClose = () => {
+    setSelectedTest(null);
+  };
 
   return (
-    <div>
+    <Modal open onClose={onClose}>
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
           <div className='form-control w-full max-w-3xl mx-auto bg-neutral-focus rounded-lg p-8'>
             <label className='label'>
-              <span className='label-text' {...formMethods.register("testName")}>Test name</span>
+              <span className='label-text'>Test name</span>
             </label>
             <input
               type='text'
               placeholder='Test name'
               className='input input-md input-bordered w-full'
+              {...formMethods.register('testName', {
+                required: true,
+                maxLength: 50,
+              })}
             />
             {Object.keys(input).map((it) => (
               <VariableInput
@@ -35,11 +41,11 @@ function CustomTestForm({ input }) {
                 name={it}
               />
             ))}
-            <button className="btn btn-success mt-8">Update!</button>
+            <button className='btn btn-success mt-8'>Update!</button>
           </div>
         </form>
       </FormProvider>
-    </div>
+    </Modal>
   );
 }
 

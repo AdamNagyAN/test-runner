@@ -1,7 +1,7 @@
 import { AiFillPlayCircle } from "react-icons/ai";
 import { ResultIndicator } from "./ResultIndicator.jsx";
 
-export default function TestTableRow({ name, testResult, onRun, points }) {
+export default function PredefinedTestTableRow({ name, testResult, onRun, points }) {
   return (
     <tr>
       <td>{name}</td>

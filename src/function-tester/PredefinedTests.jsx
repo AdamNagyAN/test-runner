@@ -1,6 +1,6 @@
 import React from 'react';
 import TestTable from './table/TestTable.jsx';
-import TestTableRow from './table/TestTableRow.jsx';
+import PredefinedTestTableRow from './table/PredefinedTestTableRow.jsx';
 
 function PredefinedTests({ tests, fn }) {
   const [testResults, setTestResults] = React.useState([]);
@@ -33,7 +33,7 @@ function PredefinedTests({ tests, fn }) {
       <h2 className='text-2xl my-6 mx-4'>Tests:</h2>
       <TestTable columns={['Name', 'Result', 'Action', 'Points']}>
         {tests.map((test, index) => (
-          <TestTableRow
+          <PredefinedTestTableRow
             key={test.name}
             name={test.name}
             testResult={testResults.find((it) => it.id === index)}
