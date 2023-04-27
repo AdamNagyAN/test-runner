@@ -5,8 +5,12 @@ import {
   AiFillCloseCircle,
   AiFillEdit,
   AiFillPlayCircle,
+  AiFillPlusCircle,
 } from 'react-icons/ai';
 import CustomTestForm from './form/CustomTestForm.jsx';
+import { ResultIndicator } from "./table/ResultIndicator.jsx";
+
+export const NEW_TEST_ID = 'newTest';
 
 const predefinedManualTests = [
   {
@@ -22,16 +26,20 @@ function CustomTests({ input }) {
   const [manualTests, setManualTests] = React.useState([
     ...predefinedManualTests,
   ]);
-  const [selectedTest, setSelectedTest] = React.useState(null);
+  const [selectedTestId, setSelectedTestId] = React.useState(null);
 
-  const onEdit = (test) => {
-    setSelectedTest(test);
+  console.log(manualTests)
+
+  const onEdit = (id) => {
+    setSelectedTestId(id);
   };
 
-  const onRemove = (test) => {
-    setManualTests(
-      manualTests.filter((man) => JSON.stringify(man) !== JSON.stringify(test)),
-    );
+  const onRemove = (id) => {
+    setManualTests(manualTests.filter((man) => man.id !== id));
+  };
+
+  const onAddTest = () => {
+    setSelectedTestId(NEW_TEST_ID);
   };
 
   return (
@@ -42,26 +50,38 @@ function CustomTests({ input }) {
           <tr key={test.id}>
             <td>{index}</td>
             <td>{test.testName}</td>
-            <td></td>
+            <td className="flex justify-center"><ResultIndicator /></td>
             <td>
               <button>
                 <AiFillPlayCircle className='icon text-accent' />
               </button>
-              <button onClick={() => onEdit(test)}>
+              <button onClick={() => onEdit(test.id)}>
                 <AiFillEdit className='icon text-info' />
               </button>
-              <button onClick={() => onRemove(test)}>
+              <button onClick={() => onRemove(test.id)}>
                 <AiFillCloseCircle className='icon text-error' />
               </button>
             </td>
           </tr>
         ))}
+        <tr>
+          <td />
+          <td />
+          <td />
+          <td>
+            <button onClick={onAddTest}>
+              <AiFillPlusCircle className='icon text-success' />
+            </button>
+          </td>
+        </tr>
       </TestTable>
-      {selectedTest && (
+      {selectedTestId && (
         <CustomTestForm
           input={input}
-          selectedTest={selectedTest}
-          setSelectedTest={setSelectedTest}
+          selectedTest={manualTests.find((test) => test.id === selectedTestId)}
+          setSelectedTest={setSelectedTestId}
+          manualTests={manualTests}
+          setManualTests={setManualTests}
         />
       )}
     </>

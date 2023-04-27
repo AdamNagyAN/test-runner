@@ -1,8 +1,15 @@
 import VariableInput from './VariableInput.jsx';
+import { v4 as uuidv4 } from 'uuid';
 import { FormProvider, useForm } from 'react-hook-form';
 import Modal from '../../components/Modal.jsx';
 
-function CustomTestForm({ input, selectedTest, setSelectedTest }) {
+function CustomTestForm({
+  input,
+  selectedTest,
+  setSelectedTest,
+  manualTests,
+  setManualTests,
+}) {
   const formMethods = useForm({
     mode: 'onSubmit',
     reValidateMode: 'onChange',
@@ -10,7 +17,15 @@ function CustomTestForm({ input, selectedTest, setSelectedTest }) {
   });
 
   const onSubmit = (formValues) => {
-    console.log(formValues);
+    if (!selectedTest) {
+      setManualTests([...manualTests, { ...formValues, id: uuidv4() }]);
+    } else {
+      setManualTests([
+        ...manualTests.filter((test) => test.id !== selectedTest.id),
+        formValues,
+      ]);
+    }
+    onClose();
   };
 
   const onClose = () => {
