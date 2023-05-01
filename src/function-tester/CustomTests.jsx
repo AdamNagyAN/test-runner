@@ -28,7 +28,6 @@ function CustomTests({ input }) {
   ]);
   const [selectedTestId, setSelectedTestId] = React.useState(null);
 
-  console.log(manualTests)
 
   const onEdit = (id) => {
     setSelectedTestId(id);

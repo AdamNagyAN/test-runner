@@ -26,7 +26,9 @@ function VariableInput({ type, name: label }) {
           <span className='label-text'>{label}:</span>
         </label>
         <input
-          {...register(label, { required: true })}
+          {...register(label, {
+            required: { value: true, message: `${label} field is required` },
+          })}
           type='checkbox'
           className='toggle toggle-success'
         />
@@ -41,7 +43,9 @@ function VariableInput({ type, name: label }) {
           <span className='label-text'>{label}:</span>
         </label>
         <input
-          {...register(label, { required: true })}
+          {...register(label, {
+            required: { value: true, message: `${label} field is required` },
+          })}
           type='number'
           placeholder={label}
           className='input input-md input-bordered w-full'
@@ -56,7 +60,9 @@ function VariableInput({ type, name: label }) {
         <span className='label-text'>{label}:</span>
       </label>
       <input
-        {...register(label, { required: true })}
+        {...register(label, {
+          required: { value: true, message: `${label} field is required` },
+        })}
         type='text'
         placeholder={label}
         className='input input-md input-bordered w-full'

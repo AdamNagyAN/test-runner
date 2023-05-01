@@ -12,7 +12,6 @@ function PredefinedTests({ tests, fn }) {
     ]);
   };
 
-  console.log(testResults);
 
   const runAllTests = () => {
     setTestResults([

@@ -2,6 +2,7 @@ import VariableInput from './VariableInput.jsx';
 import { v4 as uuidv4 } from 'uuid';
 import { FormProvider, useForm } from 'react-hook-form';
 import Modal from '../../components/Modal.jsx';
+import ErrorList from './ErrorList.jsx';
 
 function CustomTestForm({
   input,
@@ -17,6 +18,7 @@ function CustomTestForm({
   });
 
   const onSubmit = (formValues) => {
+    console.log(formValues);
     if (!selectedTest) {
       setManualTests([...manualTests, { ...formValues, id: uuidv4() }]);
     } else {
@@ -27,6 +29,7 @@ function CustomTestForm({
     }
     onClose();
   };
+
 
   const onClose = () => {
     setSelectedTest(null);
@@ -45,8 +48,12 @@ function CustomTestForm({
               placeholder='Test name'
               className='input input-md input-bordered w-full'
               {...formMethods.register('testName', {
-                required: true,
-                maxLength: 50,
+                required: { value: true, message: 'Test name is required!' },
+                maxLength: {
+                  value: 50,
+                  message:
+                    'the length of test name should be shorter then 50 characters!',
+                },
               })}
             />
             {Object.keys(input).map((it) => (
@@ -56,6 +63,9 @@ function CustomTestForm({
                 name={it}
               />
             ))}
+
+            <ErrorList />
+
             <button className='btn btn-success mt-8'>Update!</button>
           </div>
         </form>

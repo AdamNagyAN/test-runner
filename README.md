@@ -40,7 +40,7 @@ Előre megadott tesztek
 
 Egyedi tesztek
   [x] Az egyedi tesztek listája megjelenik, sorszámuk és neveik felsorolásával (1pt)
-  [ ] Új egyedi teszt hozzáadása lehetséges (1pt)
+  [x] Új egyedi teszt hozzáadása lehetséges (1pt)
   [x] Egy egyedi teszt szerkeszthető (1pt)
   [x] Egy egyedi teszt törölhető (1pt)
   [x] Egy teszt kiválasztásakor(=szerkesztésekor) megjelennek az `input` paraméterben **legfelső szinten** megadott szerkezetleírásnak megfelelő mezők. (1pt)
@@ -49,8 +49,8 @@ Egyedi tesztek
   [x] Az `input` paraméterben megadott szerkezet legfelső szintjén lévő **logikai** típus megfelelően jelenik meg (1pt)
   [x] Az `input` paraméterben megadott szerkezet legfelső szintjén lévő **tömb** típus megfelelően jelenik meg, lehetőség van új elemeket hozzáadni, meglévőeket szerkeszteni, törölni (3pt)
   [x] Az `input` paraméterben megadott szerkezet legfelső szintjén lévő **objektum** típus megfelelően jelenik meg, látszanak az objektum mezőnevei, amelyek típusuknak megfelelően szerkeszthetők (3pt)
-  [ ] A megjelenített űrlapmezők kitöltöttsége ellenőrzésre kerül, a hibák listában kiíródnak (1pt)
-  [ ] A hibalista egy elemére kattintva a fólusz a megfelelő elemre ugrik (1pt)
+  [x] A megjelenített űrlapmezők kitöltöttsége ellenőrzésre kerül, a hibák listában kiíródnak (1pt)
+  [x] A hibalista egy elemére kattintva a fólusz a megfelelő elemre ugrik (1pt)
   [x] **Tetszőleges** `input` struktúra megjelenítésre kerül rekurzívan (+5pt)
   [ ] Az egyedi tesztek egyesével futtathatók, eredményükről vizuális visszajelzést kapunk (1pt)
   [ ] Az egyedi tesztek egyszerre is futtathatók, ekkor is megfelelően változnak az egyes tesztek vizuális visszajelzései (1pt)
