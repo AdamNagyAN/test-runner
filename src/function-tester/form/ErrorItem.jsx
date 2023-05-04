@@ -1,7 +1,6 @@
 const ErrorItem = ({ error }) => {
-  console.log(error);
-
-  if (!error?.message) {
+  if(!error) return null;
+  if (!error?.message || !error?.ref) {
     return (
       <ul className='ml-2 list-disc'>
         {Object.values(error).map((it, index) => (

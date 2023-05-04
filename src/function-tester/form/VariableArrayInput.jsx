@@ -4,9 +4,9 @@ import TreeViewWithLabel from './TreeViewWithLabel.jsx';
 import { useFieldArray } from 'react-hook-form';
 import { AiFillCloseCircle, AiFillPlusCircle } from 'react-icons/ai';
 
-function VariableArrayInput({ label, type }) {
+function VariableArrayInput({ name, label, type }) {
   const { append, fields, remove } = useFieldArray({
-    name: label,
+    name: name,
   });
 
   React.useEffect(() => {
@@ -24,7 +24,8 @@ function VariableArrayInput({ label, type }) {
           <VariableInput
             key={field.id}
             type={type}
-            name={`${label}.${field}`}
+            name={`${name}.${field}`}
+            label={`${field}`}
             // name={JSON.stringify({label, field})}
           />
           {fields?.length > 1 && (

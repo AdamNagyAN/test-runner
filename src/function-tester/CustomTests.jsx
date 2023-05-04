@@ -8,26 +8,40 @@ import {
   AiFillPlusCircle,
 } from 'react-icons/ai';
 import CustomTestForm from './form/CustomTestForm.jsx';
-import { ResultIndicator } from "./table/ResultIndicator.jsx";
+import { ResultIndicator } from './table/ResultIndicator.jsx';
 
 export const NEW_TEST_ID = 'newTest';
 
 const predefinedManualTests = [
   {
+    input: {
+      a: 2,
+      b: -2,
+    },
     id: uuidv4(),
     testName: 'First manual test',
-    a: 2,
-    b: -2,
+    output: {
+      x: 0,
+    },
   },
-  { id: uuidv4(), testName: 'Second manual test', a: -4, b: 4 },
+  {
+    input: {
+      a: 4,
+      b: -4,
+    },
+    id: uuidv4(),
+    testName: 'Second manual test',
+    output: {
+      x: 0,
+    },
+  },
 ];
 
-function CustomTests({ input }) {
+function CustomTests({ input, output }) {
   const [manualTests, setManualTests] = React.useState([
     ...predefinedManualTests,
   ]);
   const [selectedTestId, setSelectedTestId] = React.useState(null);
-
 
   const onEdit = (id) => {
     setSelectedTestId(id);
@@ -41,6 +55,8 @@ function CustomTests({ input }) {
     setSelectedTestId(NEW_TEST_ID);
   };
 
+  console.log(manualTests);
+
   return (
     <>
       <h2 className='text-2xl my-6 mx-4'>Custom tests:</h2>
@@ -49,7 +65,9 @@ function CustomTests({ input }) {
           <tr key={test.id}>
             <td>{index}</td>
             <td>{test.testName}</td>
-            <td className="flex justify-center"><ResultIndicator /></td>
+            <td className='flex justify-center'>
+              <ResultIndicator />
+            </td>
             <td>
               <button>
                 <AiFillPlayCircle className='icon text-accent' />
@@ -77,6 +95,7 @@ function CustomTests({ input }) {
       {selectedTestId && (
         <CustomTestForm
           input={input}
+          output={output}
           selectedTest={manualTests.find((test) => test.id === selectedTestId)}
           setSelectedTest={setSelectedTestId}
           manualTests={manualTests}

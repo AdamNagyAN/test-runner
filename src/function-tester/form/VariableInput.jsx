@@ -2,18 +2,19 @@ import { useFormContext } from 'react-hook-form';
 import VariableArrayInput from './VariableArrayInput.jsx';
 import TreeViewWithLabel from './TreeViewWithLabel.jsx';
 
-function VariableInput({ type, name: label }) {
+function VariableInput({ type, name, label }) {
   const { register } = useFormContext();
+  console.log(label)
 
   if (type instanceof Array) {
-    return <VariableArrayInput label={label} type={type[0]} />;
+    return <VariableArrayInput name={name} label={label} type={type[0]} />;
   }
 
   if (type instanceof Object) {
     return (
-      <TreeViewWithLabel label={<span className='label-text'>{label}:</span>}>
+      <TreeViewWithLabel label={<span className='label-text'>{label}: Object</span>}>
         {Object.keys(type).map((key) => (
-          <VariableInput key={key} type={type[key]} name={`${label}.${key}`} />
+          <VariableInput key={key} type={type[key]} label={`${key}`} name={`${name}.${key}`} />
         ))}
       </TreeViewWithLabel>
     );
@@ -22,11 +23,11 @@ function VariableInput({ type, name: label }) {
   if (type === 'boolean') {
     return (
       <div className='w-full'>
-        <label className='label' htmlFor={label}>
+        <label className='label' htmlFor={name}>
           <span className='label-text'>{label}:</span>
         </label>
         <input
-          {...register(label, {
+          {...register(name, {
             required: { value: true, message: `${label} field is required` },
           })}
           type='checkbox'
@@ -43,7 +44,7 @@ function VariableInput({ type, name: label }) {
           <span className='label-text'>{label}:</span>
         </label>
         <input
-          {...register(label, {
+          {...register(name, {
             required: { value: true, message: `${label} field is required` },
           })}
           type='number'
@@ -60,7 +61,7 @@ function VariableInput({ type, name: label }) {
         <span className='label-text'>{label}:</span>
       </label>
       <input
-        {...register(label, {
+        {...register(name, {
           required: { value: true, message: `${label} field is required` },
         })}
         type='text'

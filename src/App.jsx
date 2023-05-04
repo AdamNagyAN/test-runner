@@ -5,8 +5,8 @@ function App() {
   return (
     <FunctionTester
       fn={({ a, b }) => a + b}
-      input={{ a: 'number', b: 'number' }}
-      output={'number'}
+      input={{ x: [{ name: "string", grade: "number" }], limit: "number" }}
+      output={{ x: "number" }}
       tests={[
         { name: '1 + 0', testFn: (fn) => fn({ a: 1, b: 0 }) === 1, points: 25 },
         {

@@ -6,6 +6,7 @@ import ErrorList from './ErrorList.jsx';
 
 function CustomTestForm({
   input,
+  output,
   selectedTest,
   setSelectedTest,
   manualTests,
@@ -29,7 +30,6 @@ function CustomTestForm({
     }
     onClose();
   };
-
 
   const onClose = () => {
     setSelectedTest(null);
@@ -56,14 +56,24 @@ function CustomTestForm({
                 },
               })}
             />
+            <h3 className='my-2 text-lg text-white'>Input:</h3>
             {Object.keys(input).map((it) => (
               <VariableInput
                 key={JSON.stringify(it)}
                 type={input[it]}
-                name={it}
+                name={`input.${it}`}
+                label={it}
               />
             ))}
-
+            <h3 className='my-2 text-lg text-white'>Output:</h3>
+            {Object.keys(output).map((it) => (
+              <VariableInput
+                key={JSON.stringify(it)}
+                type={output[it]}
+                name={`output.${it}`}
+                label={it}
+              />
+            ))}
             <ErrorList />
 
             <button className='btn btn-success mt-8'>Update!</button>
