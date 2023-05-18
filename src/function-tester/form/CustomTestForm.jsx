@@ -11,6 +11,7 @@ function CustomTestForm({
   setSelectedTest,
   manualTests,
   setManualTests,
+  removeTestResult,
 }) {
   const formMethods = useForm({
     mode: 'onSubmit',
@@ -19,7 +20,6 @@ function CustomTestForm({
   });
 
   const onSubmit = (formValues) => {
-    console.log(formValues);
     if (!selectedTest) {
       setManualTests([...manualTests, { ...formValues, id: uuidv4() }]);
     } else {
@@ -28,14 +28,13 @@ function CustomTestForm({
         formValues,
       ]);
     }
+    !!selectedTest?.id && removeTestResult(selectedTest.id);
     onClose();
   };
 
   const onClose = () => {
     setSelectedTest(null);
   };
-
-  console.log(formMethods.watch('input'));
 
   return (
     <Modal open onClose={onClose}>

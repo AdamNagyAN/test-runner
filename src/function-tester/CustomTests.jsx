@@ -1,6 +1,5 @@
 import React from 'react';
 import TestTable from './table/TestTable.jsx';
-import { v4 as uuidv4 } from 'uuid';
 import {
   AiFillCloseCircle,
   AiFillEdit,
@@ -12,33 +11,24 @@ import { ResultIndicator } from './table/ResultIndicator.jsx';
 
 export const NEW_TEST_ID = 'newTest';
 
-const predefinedManualTests = [
-  {
-    input: {
-      a: 2,
-      b: -2,
-    },
-    id: uuidv4(),
-    testName: 'First manual test',
-    output: 0,
-  },
-  {
-    input: {
-      a: 4,
-      b: -4,
-    },
-    id: uuidv4(),
-    testName: 'Second manual test',
-    output: 0,
-  },
-];
 
-function CustomTests({ fn, input, output }) {
-  const [manualTests, setManualTests] = React.useState([
-    ...predefinedManualTests,
-  ]);
+
+function CustomTests({
+  fn,
+  input,
+  output,
+  manualTests,
+  setManualTests,
+  manualTestResults,
+  setManualTestResults,
+}) {
   const [selectedTestId, setSelectedTestId] = React.useState(null);
-  const [manualTestResults, setManualTestResults] = React.useState([]);
+
+  const removeTestResult = (id) => {
+    setManualTestResults([
+      ...manualTestResults.filter((test) => test.id !== id),
+    ]);
+  };
 
   const onEdit = (id) => {
     setSelectedTestId(id);
@@ -51,8 +41,6 @@ function CustomTests({ fn, input, output }) {
   const onAddTest = () => {
     setSelectedTestId(NEW_TEST_ID);
   };
-
-  console.log(manualTestResults);
 
   const onRunTest = (id) => {
     const test = manualTests.find((test) => test.id === id);
@@ -68,8 +56,8 @@ function CustomTests({ fn, input, output }) {
     const results = manualTests.map((test) => {
       const functionResult = JSON.stringify(fn(test.input));
       const expectedResult = JSON.stringify(test.output);
-      return { id: test.id, isSuccess: functionResult === expectedResult }
-    })
+      return { id: test.id, isSuccess: functionResult === expectedResult };
+    });
     setManualTestResults(results);
   };
 
@@ -80,11 +68,6 @@ function CustomTests({ fn, input, output }) {
         title='Custom tests'
       >
         {manualTests.map((test, index) => {
-          console.log({
-            test,
-            result: manualTestResults.find((result) => result.id === test.id)
-              ?.isSuccess,
-          });
           return (
             <tr key={test.id}>
               <td>{index}</td>
@@ -133,6 +116,7 @@ function CustomTests({ fn, input, output }) {
           setSelectedTest={setSelectedTestId}
           manualTests={manualTests}
           setManualTests={setManualTests}
+          removeTestResult={removeTestResult}
         />
       )}
     </>

@@ -56,7 +56,7 @@ Egyedi tesztek
   [x] Az egyedi tesztek egyszerre is futtathatók, ekkor is megfelelően változnak az egyes tesztek vizuális visszajelzései (1pt)
 
 "OK" gomb
-  [ ] Az "OK" gomb helyes működése (1pt)
+  [x] Az "OK" gomb helyes működése (1pt)
 
 [x] Felhasználóbarát működés (1pt)
 [x] Igényes megjelenés (2pt)

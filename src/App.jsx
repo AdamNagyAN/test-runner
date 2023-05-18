@@ -16,7 +16,7 @@ function App() {
         },
         {
           name: '1 + -1',
-          testFn: (fn) => fn({ a: 1, b: -1 }) === 1,
+          testFn: (fn) => fn({ a: 1, b: -1 }) === 0,
           points: 25,
         },
         {

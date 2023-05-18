@@ -1,9 +1,7 @@
-import React from 'react';
 import TestTable from './table/TestTable.jsx';
 import PredefinedTestTableRow from './table/PredefinedTestTableRow.jsx';
 
-function PredefinedTests({ tests, fn }) {
-  const [testResults, setTestResults] = React.useState([]);
+function PredefinedTests({ tests, fn, testResults, setTestResults }) {
 
   const runTest = (key, test) => {
     setTestResults([
