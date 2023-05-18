@@ -29,8 +29,7 @@ function PredefinedTests({ tests, fn }) {
 
   return (
     <>
-      <h2 className='text-2xl my-6 mx-4'>Tests:</h2>
-      <TestTable columns={['Name', 'Result', 'Action', 'Points']}>
+      <TestTable columns={['Name', 'Result', 'Action', 'Points']} title="Predefined tests">
         {tests.map((test, index) => (
           <PredefinedTestTableRow
             key={test.name}

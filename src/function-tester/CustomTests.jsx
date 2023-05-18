@@ -52,21 +52,33 @@ function CustomTests({ fn, input, output }) {
     setSelectedTestId(NEW_TEST_ID);
   };
 
+  console.log(manualTestResults);
+
   const onRunTest = (id) => {
     const test = manualTests.find((test) => test.id === id);
     const functionResult = JSON.stringify(fn(test.input));
     const expectedResult = JSON.stringify(test.output);
-    console.log({ functionResult, expectedResult });
     setManualTestResults([
       ...manualTestResults.filter((test) => test.id !== id),
       { id: test.id, isSuccess: functionResult === expectedResult },
     ]);
   };
 
+  const onRunAll = () => {
+    const results = manualTests.map((test) => {
+      const functionResult = JSON.stringify(fn(test.input));
+      const expectedResult = JSON.stringify(test.output);
+      return { id: test.id, isSuccess: functionResult === expectedResult }
+    })
+    setManualTestResults(results);
+  };
+
   return (
     <>
-      <h2 className='text-2xl my-6 mx-4'>Custom tests:</h2>
-      <TestTable columns={['#', 'Name', 'Result', 'Action']}>
+      <TestTable
+        columns={['#', 'Name', 'Result', 'Action']}
+        title='Custom tests'
+      >
         {manualTests.map((test, index) => {
           console.log({
             test,
@@ -101,7 +113,11 @@ function CustomTests({ fn, input, output }) {
         <tr>
           <td />
           <td />
-          <td />
+          <td>
+            <button className='btn' onClick={onRunAll}>
+              Run All
+            </button>
+          </td>
           <td>
             <button onClick={onAddTest}>
               <AiFillPlusCircle className='icon text-success' />

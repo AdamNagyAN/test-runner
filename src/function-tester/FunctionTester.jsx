@@ -6,7 +6,6 @@ export function FunctionTester({ fn, input, output, tests, onFinish }) {
 
   return (
     <>
-      <h1>FunctionTester</h1>
       <div className='mockup-code max-w-[500px] mx-auto'>
         <pre className='bg-primary text-primary-content'>
           <code>Function</code>
@@ -15,7 +14,9 @@ export function FunctionTester({ fn, input, output, tests, onFinish }) {
           <code>{functionCode}</code>
         </pre>
       </div>
+      <div className="mt-20"/>
       <PredefinedTests fn={fn} tests={tests} />
+      <div className="mt-20"/>
       <CustomTests fn={fn} input={input} output={output} />
       <button
         className='btn'
