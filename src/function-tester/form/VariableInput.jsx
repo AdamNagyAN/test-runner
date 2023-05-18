@@ -4,7 +4,6 @@ import TreeViewWithLabel from './TreeViewWithLabel.jsx';
 
 function VariableInput({ type, name, label }) {
   const { register } = useFormContext();
-  console.log(label)
 
   if (type instanceof Array) {
     return <VariableArrayInput name={name} label={label} type={type[0]} />;
@@ -27,9 +26,7 @@ function VariableInput({ type, name, label }) {
           <span className='label-text'>{label}:</span>
         </label>
         <input
-          {...register(name, {
-            required: { value: true, message: `${label} field is required` },
-          })}
+          {...register(name)}
           type='checkbox'
           className='toggle toggle-success'
         />
@@ -46,6 +43,7 @@ function VariableInput({ type, name, label }) {
         <input
           {...register(name, {
             required: { value: true, message: `${label} field is required` },
+            valueAsNumber: true,
           })}
           type='number'
           placeholder={label}

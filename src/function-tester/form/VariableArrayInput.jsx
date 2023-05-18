@@ -29,14 +29,14 @@ function VariableArrayInput({ name, label, type }) {
             // name={JSON.stringify({label, field})}
           />
           {fields?.length > 1 && (
-            <button onClick={async () => remove(index)}>
+            <button type="button" onClick={async () => remove(index)}>
               <AiFillCloseCircle className='icon text-error' />
             </button>
           )}
         </>
       ))}
-      <button onClick={() => append()}>
-        <AiFillPlusCircle className='icon text-success' />
+      <button onClick={() => append(type)}>
+        <AiFillPlusCircle type="button" className='icon text-success' />
       </button>
     </TreeViewWithLabel>
   );

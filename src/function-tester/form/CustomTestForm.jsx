@@ -35,6 +35,8 @@ function CustomTestForm({
     setSelectedTest(null);
   };
 
+  console.log(formMethods.watch('input'));
+
   return (
     <Modal open onClose={onClose}>
       <FormProvider {...formMethods}>
@@ -57,25 +59,10 @@ function CustomTestForm({
               })}
             />
             <h3 className='my-2 text-lg text-white'>Input:</h3>
-            {Object.keys(input).map((it) => (
-              <VariableInput
-                key={JSON.stringify(it)}
-                type={input[it]}
-                name={`input.${it}`}
-                label={it}
-              />
-            ))}
+            <VariableInput type={input} name={`input`} label={'input'} />
             <h3 className='my-2 text-lg text-white'>Output:</h3>
-            {Object.keys(output).map((it) => (
-              <VariableInput
-                key={JSON.stringify(it)}
-                type={output[it]}
-                name={`output.${it}`}
-                label={it}
-              />
-            ))}
+            <VariableInput type={output} name={`output`} label={'output'} />
             <ErrorList />
-
             <button className='btn btn-success mt-8'>Update!</button>
           </div>
         </form>

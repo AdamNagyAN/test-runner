@@ -52,14 +52,14 @@ Egyedi tesztek
   [x] A megjelenített űrlapmezők kitöltöttsége ellenőrzésre kerül, a hibák listában kiíródnak (1pt)
   [x] A hibalista egy elemére kattintva a fólusz a megfelelő elemre ugrik (1pt)
   [x] **Tetszőleges** `input` struktúra megjelenítésre kerül rekurzívan (+5pt)
-  [ ] Az egyedi tesztek egyesével futtathatók, eredményükről vizuális visszajelzést kapunk (1pt)
+  [x] Az egyedi tesztek egyesével futtathatók, eredményükről vizuális visszajelzést kapunk (1pt)
   [ ] Az egyedi tesztek egyszerre is futtathatók, ekkor is megfelelően változnak az egyes tesztek vizuális visszajelzései (1pt)
 
 "OK" gomb
   [ ] Az "OK" gomb helyes működése (1pt)
 
-[ ] Felhasználóbarát működés (1pt)
-[ ] Igényes megjelenés (2pt)
+[x] Felhasználóbarát működés (1pt)
+[x] Igényes megjelenés (2pt)
 [ ] 1 hét késés (-3pt)
 [ ] 2 hét késés (-6pt)
 ```

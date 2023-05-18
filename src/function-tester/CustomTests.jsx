@@ -20,9 +20,7 @@ const predefinedManualTests = [
     },
     id: uuidv4(),
     testName: 'First manual test',
-    output: {
-      x: 0,
-    },
+    output: 0,
   },
   {
     input: {
@@ -31,17 +29,16 @@ const predefinedManualTests = [
     },
     id: uuidv4(),
     testName: 'Second manual test',
-    output: {
-      x: 0,
-    },
+    output: 0,
   },
 ];
 
-function CustomTests({ input, output }) {
+function CustomTests({ fn, input, output }) {
   const [manualTests, setManualTests] = React.useState([
     ...predefinedManualTests,
   ]);
   const [selectedTestId, setSelectedTestId] = React.useState(null);
+  const [manualTestResults, setManualTestResults] = React.useState([]);
 
   const onEdit = (id) => {
     setSelectedTestId(id);
@@ -55,32 +52,52 @@ function CustomTests({ input, output }) {
     setSelectedTestId(NEW_TEST_ID);
   };
 
-  console.log(manualTests);
+  const onRunTest = (id) => {
+    const test = manualTests.find((test) => test.id === id);
+    const functionResult = JSON.stringify(fn(test.input));
+    const expectedResult = JSON.stringify(test.output);
+    console.log({ functionResult, expectedResult });
+    setManualTestResults([
+      ...manualTestResults.filter((test) => test.id !== id),
+      { id: test.id, isSuccess: functionResult === expectedResult },
+    ]);
+  };
 
   return (
     <>
       <h2 className='text-2xl my-6 mx-4'>Custom tests:</h2>
       <TestTable columns={['#', 'Name', 'Result', 'Action']}>
-        {manualTests.map((test, index) => (
-          <tr key={test.id}>
-            <td>{index}</td>
-            <td>{test.testName}</td>
-            <td className='flex justify-center'>
-              <ResultIndicator />
-            </td>
-            <td>
-              <button>
-                <AiFillPlayCircle className='icon text-accent' />
-              </button>
-              <button onClick={() => onEdit(test.id)}>
-                <AiFillEdit className='icon text-info' />
-              </button>
-              <button onClick={() => onRemove(test.id)}>
-                <AiFillCloseCircle className='icon text-error' />
-              </button>
-            </td>
-          </tr>
-        ))}
+        {manualTests.map((test, index) => {
+          console.log({
+            test,
+            result: manualTestResults.find((result) => result.id === test.id)
+              ?.isSuccess,
+          });
+          return (
+            <tr key={test.id}>
+              <td>{index}</td>
+              <td>{test.testName}</td>
+              <td className='flex justify-center'>
+                <ResultIndicator
+                  testResult={manualTestResults.find(
+                    (result) => result.id === test.id,
+                  )}
+                />
+              </td>
+              <td>
+                <button onClick={() => onRunTest(test.id)}>
+                  <AiFillPlayCircle className='icon text-accent' />
+                </button>
+                <button onClick={() => onEdit(test.id)}>
+                  <AiFillEdit className='icon text-info' />
+                </button>
+                <button onClick={() => onRemove(test.id)}>
+                  <AiFillCloseCircle className='icon text-error' />
+                </button>
+              </td>
+            </tr>
+          );
+        })}
         <tr>
           <td />
           <td />

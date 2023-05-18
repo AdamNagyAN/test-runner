@@ -16,7 +16,7 @@ export function FunctionTester({ fn, input, output, tests, onFinish }) {
         </pre>
       </div>
       <PredefinedTests fn={fn} tests={tests} />
-      <CustomTests input={input} output={output} />
+      <CustomTests fn={fn} input={input} output={output} />
       <button
         className='btn'
         onClick={() =>
